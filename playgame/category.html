@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Games by Category - Arcade Haven</title>
+    <meta name="description" content="Browse our collection of free online games by category. Find action games, puzzle games, strategy games, sports games, and more.">
+    <link rel="canonical" href="https://arcadehaven.com/category.html">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Apple-like color palette
+                        'apple-blue': '#007AFF',
+                        'apple-green': '#34C759',
+                        'apple-indigo': '#5856D6',
+                        'apple-orange': '#FF9500',
+                        'apple-pink': '#FF2D55',
+                        'apple-purple': '#AF52DE',
+                        'apple-red': '#FF3B30',
+                        'apple-teal': '#5AC8FA',
+                        'apple-yellow': '#FFCC00',
+                        'apple-gray': '#8E8E93',
+                        'apple-gray-2': '#AEAEB2',
+                        'apple-gray-3': '#C7C7CC',
+                        'apple-gray-4': '#D1D1D6',
+                        'apple-gray-5': '#E5E5EA',
+                        'apple-gray-6': '#F2F2F7',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-apple-gray-6 text-gray-800 min-h-screen">
+    <!-- Header with Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center mb-4 md:mb-0">
+                <a href="index.html" class="text-2xl font-bold text-apple-blue flex items-center">
+                    <span>Arcade Haven</span>
+                </a>
+            </div>
+
+            <!-- Search Bar - Always Visible -->
+            <div class="w-full md:w-1/3 mb-4 md:mb-0">
+                <div class="relative">
+                    <input type="text" placeholder="Search games..." 
+                           class="search-input w-full px-4 py-2 rounded-full border border-apple-gray-4 focus:outline-none">
+                    <button class="absolute right-3 top-2 text-apple-gray">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex flex-wrap justify-center">
+                <a href="index.html" class="px-3 py-2 text-gray-600 hover:text-apple-blue nav-home">Home</a>
+                <a href="category.html?cat=action" class="px-3 py-2 text-gray-600 hover:text-apple-blue nav-action">Action</a>
+                <a href="category.html?cat=puzzle" class="px-3 py-2 text-gray-600 hover:text-apple-blue nav-puzzle">Puzzle</a>
+                <a href="category.html?cat=strategy" class="px-3 py-2 text-gray-600 hover:text-apple-blue nav-strategy">Strategy</a>
+                <a href="category.html?cat=sports" class="px-3 py-2 text-gray-600 hover:text-apple-blue nav-sports">Sports</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Category Header -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+            <div class="bg-gradient-to-r from-apple-blue to-apple-indigo p-6 text-white">
+                <h1 id="category-header" class="text-3xl font-bold">Browse Games</h1>
+                <p id="category-description" class="mt-2 text-white text-opacity-90">
+                    Find your favorite games from our collection of free online games across various categories.
+                </p>
+            </div>
+            
+            <!-- Filters -->
+            <div class="p-6 border-t border-apple-gray-5 flex flex-col md:flex-row md:items-center justify-between">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <span class="text-gray-600">Filter:</span>
+                    <div class="flex flex-wrap gap-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="rating-filter" value="all" checked class="form-radio text-apple-blue" />
+                            <span class="ml-2 text-gray-700">All Ratings</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="rating-filter" value="4.5" class="form-radio text-apple-blue" />
+                            <span class="ml-2 text-gray-700">4.5+</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="rating-filter" value="4.0" class="form-radio text-apple-blue" />
+                            <span class="ml-2 text-gray-700">4.0+</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-gray-600 mr-2">Sort by:</span>
+                    <select id="sort-select" class="border border-apple-gray-4 rounded px-3 py-1 bg-white focus:outline-none focus:ring-1 focus:ring-apple-blue">
+                        <option value="popular">Most Popular</option>
+                        <option value="rating-high">Highest Rating</option>
+                        <option value="rating-low">Lowest Rating</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Results Count -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="text-gray-600">
+                <span id="game-count">0 games</span> found
+            </div>
+        </div>
+        
+        <!-- Games Grid -->
+        <div id="games-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Game cards will be inserted here via JavaScript -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div class="h-40 bg-apple-gray-3"></div>
+                <div class="p-4">
+                    <div class="h-6 bg-apple-gray-4 rounded mb-2"></div>
+                    <div class="h-4 bg-apple-gray-4 rounded mb-4"></div>
+                    <div class="flex justify-between">
+                        <div class="h-5 w-16 bg-apple-gray-4 rounded"></div>
+                        <div class="h-5 w-12 bg-apple-gray-4 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div class="h-40 bg-apple-gray-3"></div>
+                <div class="p-4">
+                    <div class="h-6 bg-apple-gray-4 rounded mb-2"></div>
+                    <div class="h-4 bg-apple-gray-4 rounded mb-4"></div>
+                    <div class="flex justify-between">
+                        <div class="h-5 w-16 bg-apple-gray-4 rounded"></div>
+                        <div class="h-5 w-12 bg-apple-gray-4 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div class="h-40 bg-apple-gray-3"></div>
+                <div class="p-4">
+                    <div class="h-6 bg-apple-gray-4 rounded mb-2"></div>
+                    <div class="h-4 bg-apple-gray-4 rounded mb-4"></div>
+                    <div class="flex justify-between">
+                        <div class="h-5 w-16 bg-apple-gray-4 rounded"></div>
+                        <div class="h-5 w-12 bg-apple-gray-4 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div class="h-40 bg-apple-gray-3"></div>
+                <div class="p-4">
+                    <div class="h-6 bg-apple-gray-4 rounded mb-2"></div>
+                    <div class="h-4 bg-apple-gray-4 rounded mb-4"></div>
+                    <div class="flex justify-between">
+                        <div class="h-5 w-16 bg-apple-gray-4 rounded"></div>
+                        <div class="h-5 w-12 bg-apple-gray-4 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div class="h-40 bg-apple-gray-3"></div>
+                <div class="p-4">
+                    <div class="h-6 bg-apple-gray-4 rounded mb-2"></div>
+                    <div class="h-4 bg-apple-gray-4 rounded mb-4"></div>
+                    <div class="flex justify-between">
+                        <div class="h-5 w-16 bg-apple-gray-4 rounded"></div>
+                        <div class="h-5 w-12 bg-apple-gray-4 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div class="h-40 bg-apple-gray-3"></div>
+                <div class="p-4">
+                    <div class="h-6 bg-apple-gray-4 rounded mb-2"></div>
+                    <div class="h-4 bg-apple-gray-4 rounded mb-4"></div>
+                    <div class="flex justify-between">
+                        <div class="h-5 w-16 bg-apple-gray-4 rounded"></div>
+                        <div class="h-5 w-12 bg-apple-gray-4 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div class="h-40 bg-apple-gray-3"></div>
+                <div class="p-4">
+                    <div class="h-6 bg-apple-gray-4 rounded mb-2"></div>
+                    <div class="h-4 bg-apple-gray-4 rounded mb-4"></div>
+                    <div class="flex justify-between">
+                        <div class="h-5 w-16 bg-apple-gray-4 rounded"></div>
+                        <div class="h-5 w-12 bg-apple-gray-4 rounded"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div class="h-40 bg-apple-gray-3"></div>
+                <div class="p-4">
+                    <div class="h-6 bg-apple-gray-4 rounded mb-2"></div>
+                    <div class="h-4 bg-apple-gray-4 rounded mb-4"></div>
+                    <div class="flex justify-between">
+                        <div class="h-5 w-16 bg-apple-gray-4 rounded"></div>
+                        <div class="h-5 w-12 bg-apple-gray-4 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Arcade Haven</h3>
+                    <p class="text-gray-400">Your destination for the best free online games. Play instantly with no downloads required.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="category.html?cat=popular" class="text-gray-400 hover:text-white">Popular Games</a></li>
+                        <li><a href="category.html?cat=new" class="text-gray-400 hover:text-white">New Games</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="category.html?cat=action" class="text-gray-400 hover:text-white">Action</a></li>
+                        <li><a href="category.html?cat=puzzle" class="text-gray-400 hover:text-white">Puzzle</a></li>
+                        <li><a href="category.html?cat=strategy" class="text-gray-400 hover:text-white">Strategy</a></li>
+                        <li><a href="category.html?cat=sports" class="text-gray-400 hover:text-white">Sports</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; <span id="current-year">2023</span> Arcade Haven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load common JavaScript -->
+    <script src="js/common.js"></script>
+    <script src="js/category.js"></script>
+</body>
+</html> 
