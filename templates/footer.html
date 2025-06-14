@@ -1,0 +1,36 @@
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Arcade Haven</h3>
+                <p class="text-gray-400">Your destination for the best free online games. Play instantly with no downloads required.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="/index.html" class="text-gray-400 hover:text-white">Home</a></li>
+                    <li><a href="/category.html?cat=popular" class="text-gray-400 hover:text-white">Popular Games</a></li>
+                    <li><a href="/category.html?cat=new" class="text-gray-400 hover:text-white">New Games</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Categories</h3>
+                <ul class="space-y-2">
+                    <li><a href="/category.html?cat=action" class="text-gray-400 hover:text-white">Action</a></li>
+                    <li><a href="/category.html?cat=puzzle" class="text-gray-400 hover:text-white">Puzzle</a></li>
+                    <li><a href="/category.html?cat=strategy" class="text-gray-400 hover:text-white">Strategy</a></li>
+                    <li><a href="/category.html?cat=sports" class="text-gray-400 hover:text-white">Sports</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+            <p>&copy; <span id="current-year">2023</span> Arcade Haven. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Update copyright year automatically
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script> 
